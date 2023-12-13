@@ -146,17 +146,14 @@ public:
     }
 
     // 删除跳表中的节点
-    bool erase(const K& key) {
+    void erase(const K& key) {
         node* update[MAXL + 1];
         node* p = find(key, update);
-        if (p->key != key)return false;
-        for (int i = 0; i <= p->level; ++i) {
-            update[i]->forward[i] = p->forward[i];
-        }
+        if (p->key != key)return;
+        for (int i = 0; i <= p->level; ++i) update[i]->forward[i] = p->forward[i];
         delete p;
         while (level > 0 && head->forward[level] == tail) --level;
         --length;
-        return true;
     }
 
     // 查找节点
@@ -300,6 +297,7 @@ int main()
         list.insert(4, 3);
         list.insert(5, 2);
         list.insert(6, 1);
+        list.erase(1);
         // list.show();
         cout << "size: " << list.size() << endl;
         cout << "at(1): " << list.at(1) << endl;
