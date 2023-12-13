@@ -28,7 +28,7 @@
   
   交换两个跳表:void swap(skip_list& rhs);
   
-  跳表的首尾迭代器：Iter end()； Iter begin()
+  跳表的首尾迭代器：Iter end()； Iter begin();
   
   按键访问值；V at(const K& key)；
   
